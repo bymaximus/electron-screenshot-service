@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "dependencies": {
     "axon": "^2.0.1",
-    "electron-screenshot-app": "https://github.com/bymaximus/electron-screenshot-app/tarball/3cee8461526c46a1b741966581d4ebb885fc69a8"
+    "electron-screenshot-app": "https://github.com/bymaximus/electron-screenshot-app/tarball/72616a609f88232490666396b6078826c9a70f90"
   },
   "private": true
 }
