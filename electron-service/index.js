@@ -1,5 +1,9 @@
 'use strict';
 
+if (! process.env.DISPLAY) {
+	process.env.DISPLAY = ':0';
+}
+
 const {app} = require('electron');
 const screenshot = require('electron-screenshot-app');
 const sock = require('axon').socket('rep');

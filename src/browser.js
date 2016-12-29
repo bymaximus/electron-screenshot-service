@@ -62,22 +62,32 @@ module.exports = {
 
 	count: 0,
 
-	screenshot: function (options) {
+	screenshot: function (options, envOptions) {
 		if (this.count === 0) {
-			return this.createBrowser()
+			return this.createBrowser(envOptions)
 			.then(screenshot.bind(null, options));
 		}
 
 		return screenshot(options);
 	},
 
-	createBrowser: function () {
+	createBrowser: function (envOptions) {
+		var env = process.env;
+		if (envOptions) {
+			for (var key in envOptions) {
+				if (! key) {
+					continue;
+				}
+				env[key] = envOptions[key];
+			}
+		}
 		var self = this;
 		this.count++;
 		return bindSocket()
 		.then(function () {
 			spawn(electronpath, ['.'], {
-				cwd: app
+				cwd: app,
+				env: env
 			})
 			.once('close', function () {
 				self.count--;

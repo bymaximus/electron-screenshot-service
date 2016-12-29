@@ -13,7 +13,7 @@ module.exports = browser.screenshot.bind(browser);
  * Scale the avaiable browser instance to i browser
  * @param {Number} i The number of browser to use.
  */
-module.exports.scale = function (scale) {
+module.exports.scale = function (scale, envOptions) {
 	var browserChange = scale - browser.count;
 	if (browserChange < 0) {
 		for (var i = 0; i < -browserChange; i++) {
@@ -21,7 +21,7 @@ module.exports.scale = function (scale) {
 		}
 	} else {
 		for (var b = 0; b < browserChange; b++) {
-			browser.createBrowser();
+			browser.createBrowser(envOptions);
 		}
 	}
 };
